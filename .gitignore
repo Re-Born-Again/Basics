@@ -1,0 +1,11 @@
+*/*.out
+*/.DS_Store
+*/.vscode
+
+*/dummy*.*
+
+**/.idea
+**/out
+**/*.iml
+
+**/Dummy.java
