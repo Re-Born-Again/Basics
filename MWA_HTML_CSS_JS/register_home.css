@@ -1,0 +1,15 @@
+.container{
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+}
+.div_in{
+    border: 0.5px solid black;
+    padding-left: 20px;
+}
+.left{
+    flex: 2;
+}
+.right{
+    flex: 1;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dialog control</title>
+</head>
+    <body>
+        <script type="text/javascript">
+
+            var n = parseInt(window.prompt("Enter a valid number to check if its odd or even and prime or not : "));
+            if(!isNaN(n)){            
+                if(n%2==0){
+                    document.writeln("1. "+n+" is an even number!<br>");
+                }
+                else{
+                    document.writeln("1. "+n+" is an odd number!<br>")
+                }
+
+                var isprime=true;
+                for(var i=2;i<(n/2)+1;i++){
+                    if(n%i==0){
+                        isprime=false;
+                        document.writeln("2. "+n+" is not prime!<br>");
+                        break;
+                    }
+                }
+                if(isprime==true){
+                    document.writeln("2. "+n+" is prime!<br>")
+                }
+
+                var n2 = parseInt(window.prompt("Enter an another number to check it divide the 1st number : "));
+                if(!isNaN(n2)){
+                    if(n%n2==0){
+                        document.writeln("3. "+n+" is divisible by "+n2+"<br>");
+                    }
+                    else{
+                        document.writeln("3. "+n+" is not divisible by "+n2+"<br>");
+                    }
+                }
+                else{
+                    document.writeln("Invalid Number!<br>")
+                }
+            }
+            else{
+                document.writeln("Invalid Number!<br>")
+            }
+            
+            var num = window.prompt("Enter a number to check its length : ");
+            document.writeln("Length of the given number "+num+" is : "+num.length+"<br>");
+
+        </script>
+    </body>
+</html>
