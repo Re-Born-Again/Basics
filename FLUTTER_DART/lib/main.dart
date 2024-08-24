@@ -38,71 +38,34 @@ class _HomeState extends State<Home> {
           padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
           child: SingleChildScrollView(
             child: Column(
+              // for making it in vertical scroll
               children: [
-                GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const Academic(),
-                        ),
-                      );
-                    },
-                    child: Column(
-                      children: [
-                        Container(
-                            decoration: BoxDecoration(
-                              color: Colors.red,
-                              borderRadius: BorderRadius.circular(10),
-                              image: const DecorationImage(
-                                image: NetworkImage(
-                                    'https://img.freepik.com/free-vector/elegant-red-background_1340-4770.jpg?size=626&ext=jpg&ga=GA1.1.1387024122.1708704045&semt=sph'),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            height: 130,
-                            width: 400,
-                            child: const Center(
-                              child: Text(
-                                "Academic\nDetails",
-                                style: TextStyle(
-                                    fontSize: 33, color: Colors.white),
-                              ),
-                            )),
-                        const SizedBox(
-                          height: 15,
-                        )
-                      ],
-                    )),
-                GestureDetector(
-                    onTap: () {
-                      print("RE");
-                    },
-                    child: Column(
-                      children: [
-                        Container(
-                            decoration: BoxDecoration(
-                              color: Colors.blue,
-                              borderRadius: BorderRadius.circular(10),
-                              image: const DecorationImage(
-                                  image: NetworkImage(
-                                      'https://img.freepik.com/free-photo/abstract-grunge-decorative-relief-navy-blue-stucco-wall-texture-wide-angle-rough-colored-background_1258-28311.jpg?size=626&ext=jpg&ga=GA1.1.1387024122.1708704045&semt=sph'),
-                                  fit: BoxFit.cover),
-                            ),
-                            height: 130,
-                            width: 400,
-                            child: const Center(
-                              child: Text(
-                                "Register &\nEvents",
-                                style: TextStyle(
-                                    fontSize: 33, color: Colors.white),
-                              ),
-                            )),
-                        const SizedBox(
-                          height: 10,
-                        )
-                      ],
-                    )),
+                HomeContainer(
+                  content: "Academic\nDetails",
+                  imglink:
+                      'https://img.freepik.com/free-vector/elegant-red-background_1340-4770.jpg?size=626&ext=jpg&ga=GA1.1.1387024122.1708704045&semt=sph',
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Academic(),
+                      ),
+                    );
+                  },
+                ),
+                HomeContainer(
+                  content: "Academic\nDetails",
+                  imglink:
+                      'https://img.freepik.com/free-photo/abstract-grunge-decorative-relief-navy-blue-stucco-wall-texture-wide-angle-rough-colored-background_1258-28311.jpg?size=626&ext=jpg&ga=GA1.1.1387024122.1708704045&semt=sph',
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Academic(),
+                      ),
+                    );
+                  },
+                )
               ],
             ),
           ),
@@ -110,51 +73,48 @@ class _HomeState extends State<Home> {
   }
 }
 
+class HomeContainer extends StatelessWidget {
+  final String content;
+  final String imglink;
+  final VoidCallback onTap;
+  const HomeContainer({
+    super.key,
+    required this.content,
+    required this.imglink,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+        onTap: onTap,
+        child: Column(
+          children: [
+            Container(
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(10),
+                  image: DecorationImage(
+                      image: NetworkImage(imglink), fit: BoxFit.cover),
+                ),
+                height: 130,
+                width: 400,
+                child: Center(
+                  child: Text(
+                    content,
+                    style: const TextStyle(fontSize: 33, color: Colors.white),
+                  ),
+                )),
+            const SizedBox(
+              height: 15,
+            )
+          ],
+        ));
+  }
+}
+
 class Academic extends StatelessWidget {
   const Academic({Key? key}) : super(key: key);
-
-  Widget _buildGridItem({
-    required IconData icon,
-    required String title,
-    required Color color,
-    required VoidCallback onTap,
-  }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Column(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              color: color,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            height: 160,
-            width: 160,
-            padding: const EdgeInsets.fromLTRB(20, 37, 20, 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Icon(
-                  icon,
-                  color: color == Colors.white ? Colors.black : Colors.white,
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  title,
-                  style: TextStyle(
-                    color: color == Colors.white ? Colors.black : Colors.white,
-                    fontSize: 17,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 25),
-        ],
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -206,7 +166,7 @@ class Academic extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    _buildGridItem(
+                    AcademicGridItem(
                       icon: Icons.calendar_month_outlined,
                       title: 'View\nTimetable',
                       color: Colors.white,
@@ -219,62 +179,111 @@ class Academic extends StatelessWidget {
                         );
                       },
                     ),
-                    _buildGridItem(
+                    AcademicGridItem(
                       icon: Icons.check_box_outlined,
                       title: 'View\nAttendance',
                       color: const Color.fromARGB(255, 54, 51, 229),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const UnderConstruction(),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    _buildGridItem(
-                      icon: Icons.check_box_outlined,
+                    AcademicGridItem(
+                      icon: Icons.add_chart_outlined,
                       title: 'View\nInternal marks',
                       color: const Color.fromARGB(255, 54, 51, 229),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const UnderConstruction(),
+                          ),
+                        );
+                      },
                     ),
-                    _buildGridItem(
-                      icon: Icons.score_outlined,
+                    AcademicGridItem(
+                      icon: Icons.grading_outlined,
                       title: 'View\nCGPA history',
                       color: Colors.white,
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const UnderConstruction(),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    _buildGridItem(
-                      icon: Icons.calendar_month_outlined,
+                    AcademicGridItem(
+                      icon: Icons.list_alt_outlined,
                       title: 'View\nCourses',
                       color: Colors.white,
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const UnderConstruction(),
+                          ),
+                        );
+                      },
                     ),
-                    _buildGridItem(
-                      icon: Icons.check_box_outlined,
+                    AcademicGridItem(
+                      icon: Icons.credit_card_outlined,
                       title: 'View\nFee payments',
                       color: const Color.fromARGB(255, 54, 51, 229),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const UnderConstruction(),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    _buildGridItem(
-                      icon: Icons.check_box_outlined,
+                    AcademicGridItem(
+                      icon: Icons.av_timer_outlined,
                       title: 'View\nExam schedule',
                       color: const Color.fromARGB(255, 54, 51, 229),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const UnderConstruction(),
+                          ),
+                        );
+                      },
                     ),
-                    _buildGridItem(
-                      icon: Icons.calendar_month_outlined,
+                    AcademicGridItem(
+                      icon: Icons.attach_money_outlined,
                       title: 'View\nFee due',
                       color: Colors.white,
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const UnderConstruction(),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
@@ -284,6 +293,93 @@ class Academic extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class AcademicGridItem extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final Color color;
+  final VoidCallback onTap;
+  const AcademicGridItem({
+    super.key,
+    required this.title,
+    required this.color,
+    required this.icon,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: color,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            height: 160,
+            width: 160,
+            padding: const EdgeInsets.fromLTRB(20, 37, 20, 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Icon(
+                  icon,
+                  color: color == Colors.white ? Colors.black : Colors.white,
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  title,
+                  style: TextStyle(
+                    color: color == Colors.white ? Colors.black : Colors.white,
+                    fontSize: 17,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 25),
+        ],
+      ),
+    );
+  }
+}
+
+class UnderConstruction extends StatelessWidget {
+  const UnderConstruction({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+          leading: IconButton(
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.pop(
+                  context); // Navigate back to the previous route (Home)
+            },
+          ),
+        ),
+        backgroundColor: Colors.black,
+        body: Center(
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Text(
+              "This Page is Under Construction!",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+              ),
+            ),
+          ]),
+        ));
   }
 }
 
