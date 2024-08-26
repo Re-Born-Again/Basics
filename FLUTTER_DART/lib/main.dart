@@ -54,7 +54,7 @@ class _HomeState extends State<Home> {
                   },
                 ),
                 HomeContainer(
-                  content: "Academic\nDetails",
+                  content: "Register &\nEvents",
                   imglink:
                       'https://img.freepik.com/free-photo/abstract-grunge-decorative-relief-navy-blue-stucco-wall-texture-wide-angle-rough-colored-background_1258-28311.jpg?size=626&ext=jpg&ga=GA1.1.1387024122.1708704045&semt=sph',
                   onTap: () {
@@ -169,7 +169,7 @@ class Academic extends StatelessWidget {
                     AcademicGridItem(
                       icon: Icons.calendar_month_outlined,
                       title: 'View\nTimetable',
-                      color: Colors.white,
+                      color: const Color.fromARGB(255, 255, 255, 255),
                       onTap: () {
                         Navigator.push(
                           context,
@@ -182,12 +182,12 @@ class Academic extends StatelessWidget {
                     AcademicGridItem(
                       icon: Icons.check_box_outlined,
                       title: 'View\nAttendance',
-                      color: const Color.fromARGB(255, 54, 51, 229),
+                      color: const Color.fromARGB(255, 0, 110, 110),
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const UnderConstruction(),
+                            builder: (context) => const Attendance(),
                           ),
                         );
                       },
@@ -200,7 +200,7 @@ class Academic extends StatelessWidget {
                     AcademicGridItem(
                       icon: Icons.add_chart_outlined,
                       title: 'View\nInternal marks',
-                      color: const Color.fromARGB(255, 54, 51, 229),
+                      color: const Color.fromARGB(255, 0, 110, 110),
                       onTap: () {
                         Navigator.push(
                           context,
@@ -244,7 +244,7 @@ class Academic extends StatelessWidget {
                     AcademicGridItem(
                       icon: Icons.credit_card_outlined,
                       title: 'View\nFee payments',
-                      color: const Color.fromARGB(255, 54, 51, 229),
+                      color: const Color.fromARGB(255, 0, 110, 110),
                       onTap: () {
                         Navigator.push(
                           context,
@@ -262,7 +262,7 @@ class Academic extends StatelessWidget {
                     AcademicGridItem(
                       icon: Icons.av_timer_outlined,
                       title: 'View\nExam schedule',
-                      color: const Color.fromARGB(255, 54, 51, 229),
+                      color: const Color.fromARGB(255, 0, 110, 110),
                       onTap: () {
                         Navigator.push(
                           context,
@@ -369,7 +369,7 @@ class UnderConstruction extends StatelessWidget {
           ),
         ),
         backgroundColor: Colors.black,
-        body: Center(
+        body: const Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Text(
               "This Page is Under Construction!",
@@ -422,7 +422,7 @@ class Timetable extends StatelessWidget {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(5),
                 ),
-                labelColor: const Color.fromARGB(255, 34, 74, 250),
+                labelColor: const Color.fromARGB(255, 0, 110, 110),
                 unselectedLabelColor: Colors.grey,
                 labelStyle:
                     const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
@@ -500,7 +500,7 @@ class Scroll extends StatelessWidget {
                   Text(
                     'Time',
                     style: TextStyle(
-                        color: Color.fromARGB(255, 34, 74, 250),
+                        color: Color.fromARGB(255, 0, 110, 110),
                         fontSize: 16,
                         fontWeight: FontWeight.w500),
                   ),
@@ -513,7 +513,7 @@ class Scroll extends StatelessWidget {
               height: 65,
               width: 350,
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 34, 74, 250),
+                color: const Color.fromARGB(255, 0, 110, 110),
                 borderRadius: BorderRadius.circular(5),
               ),
               padding: const EdgeInsets.only(
@@ -538,6 +538,200 @@ class Scroll extends StatelessWidget {
                 ],
               ),
             ),
+        ],
+      ),
+    );
+  }
+}
+
+class Attendance extends StatelessWidget {
+  const Attendance({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            "Your Attendance",
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Colors.black,
+          leading: IconButton(
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.pop(
+                  context); // Navigate back to the previous route (Home)
+            },
+          ),
+        ),
+        backgroundColor: Colors.black,
+        body: Padding(
+          padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+          child: SingleChildScrollView(
+            child: Column(
+              // for making it in vertical scroll
+              children: [
+                AttendanceContainer(
+                  name: "Subject1",
+                  code: "S1",
+                  total: 100,
+                  present: 90,
+                  absent: 10,
+                  onTap: () {},
+                ),
+                AttendanceContainer(
+                  name: "Subject2",
+                  code: "S2",
+                  total: 100,
+                  present: 90,
+                  absent: 10,
+                  onTap: () {},
+                ),
+                AttendanceContainer(
+                  name: "Subject3",
+                  code: "S3",
+                  total: 100,
+                  present: 90,
+                  absent: 10,
+                  onTap: () {},
+                ),
+                AttendanceContainer(
+                  name: "Subject4",
+                  code: "S4",
+                  total: 100,
+                  present: 90,
+                  absent: 10,
+                  onTap: () {},
+                ),
+              ],
+            ),
+          ),
+        ));
+  }
+}
+
+class AttendanceContainer extends StatelessWidget {
+  final String name;
+  final String code;
+  final int total;
+  final int present;
+  final int absent;
+  final VoidCallback onTap;
+  const AttendanceContainer({
+    super.key,
+    required this.name,
+    required this.code,
+    required this.total,
+    required this.present,
+    required this.absent,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(5),
+            ),
+            height: 200,
+            width: double.infinity,
+            padding: const EdgeInsets.fromLTRB(20, 37, 20, 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      name,
+                      style: const TextStyle(
+                        color: Color.fromARGB(255, 0, 110, 110),
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      code,
+                      style: const TextStyle(
+                        color: Color.fromARGB(255, 0, 110, 110),
+                        fontSize: 17,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                RichText(
+                    text: TextSpan(children: [
+                  const TextSpan(
+                    text: "Total : ",
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 0, 110, 110),
+                      fontSize: 17,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  TextSpan(
+                    text: "$total hours",
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 17,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ])),
+                const SizedBox(height: 10),
+                RichText(
+                    text: TextSpan(children: [
+                  const TextSpan(
+                    text: "Present : ",
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 0, 110, 110),
+                      fontSize: 17,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  TextSpan(
+                    text: "$present hours",
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 17,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ])),
+                const SizedBox(height: 10),
+                RichText(
+                    text: TextSpan(children: [
+                  const TextSpan(
+                    text: "Absent : ",
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 0, 110, 110),
+                      fontSize: 17,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  TextSpan(
+                    text: "$absent hours",
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 17,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ])),
+              ],
+            ),
+          ),
+          const SizedBox(height: 25),
         ],
       ),
     );
