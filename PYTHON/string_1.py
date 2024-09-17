@@ -51,4 +51,13 @@ def func5():
     str3 = str3[:4] + str3[6:]
     print(str3)
 
+def func6():
+    # to string is done as
+    l = ['a','b','c','d']
+    s = "".join(l)
+    print(s)
+    # for non-string characters do
+    s = "".join(map(str,l))
+    print(s)
+
 func3()

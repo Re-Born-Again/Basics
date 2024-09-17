@@ -1,7 +1,73 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+
+var sessionId = '';
 
 void main() {
   runApp(const Myapp());
+}
+
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  var regNo = TextEditingController();
+  var dob = TextEditingController();
+  var captcha = TextEditingController();
+  var isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    setCookies();
+  }
+
+  Future<void> setCookies() async {
+    final resp = await get(Uri.parse('https://webstream.sastra.edu/sastrapwi'));
+    sessionId = resp.headers['Set-Cookies'] ?? '';
+  }
+
+  Future<void> submit() async {
+    final resp =
+        await post(Uri.parse('https://webstream.sastra.edu/sastrapwi'), body: {
+      'txtRegNumber': regNo.text,
+      'txtPwd': dob.text,
+      'txtPA': '1',
+      'answer': captcha.text,
+    });
+    if (resp.isRedirect) {
+      await Navigator.of(context)
+          .pushReplacement(MaterialPageRoute(builder: (_) => const Myapp()));
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return isLoading
+        ? Center(child: CircularProgressIndicator())
+        : Scaffold(
+            appBar: AppBar(title: Text("Login page")),
+            body: Column(
+              children: [
+                Text('Reg no'),
+                TextField(controller: regNo),
+                Text('Reg no'),
+                TextField(controller: regNo),
+                Text('Reg no'),
+                Image.network(
+                    'https://webstream.sastra.edu/sastrapwi/stickyImg?ms=${DateTime.now().millisecond}'),
+                TextField(controller: regNo),
+                ElevatedButton(
+                  onPressed: submit,
+                  child: Text("Submit"),
+                ),
+              ],
+            ));
+  }
 }
 
 class Myapp extends StatelessWidget {
@@ -57,14 +123,7 @@ class _HomeState extends State<Home> {
                   content: "Register &\nEvents",
                   imglink:
                       'https://img.freepik.com/free-photo/abstract-grunge-decorative-relief-navy-blue-stucco-wall-texture-wide-angle-rough-colored-background_1258-28311.jpg?size=626&ext=jpg&ga=GA1.1.1387024122.1708704045&semt=sph',
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const Academic(),
-                      ),
-                    );
-                  },
+                  onTap: () {},
                 )
               ],
             ),

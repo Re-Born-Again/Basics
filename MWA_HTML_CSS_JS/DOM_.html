@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Examples</title>
+    <style>
+        .highlight {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<h2>JavaScript</h2>
+
+<h3>Add Rows to a Table</h3>
+<table id="myTable" border="1">
+    <tr>
+        <th>Row 1</th>
+    </tr>
+</table>
+<br>
+<button onclick="addRow()">Add Row</button>
+
+<h3>Eliminate Items from a Drop-down List</h3>
+<select id="mySelect">
+    <option value="Item1">Item 1</option>
+    <option value="Item2">Item 2</option>
+    <option value="Item3">Item 3</option>
+    <option value="Item4">Item 4</option>
+</select>
+<br>
+<button onclick="eliminateItem()">Eliminate Selected Item</button>
+
+<h3>Get First and Last Names</h3>
+<form id="registrationForm">
+    First name: <input type="text" id="firstName"><br>
+    Last name: <input type="text" id="lastName"><br>
+</form>
+<br>
+<button onclick="showNames()">Show Names</button>
+
+<h3>Hover to Highlight Paragraph</h3>
+<a href="#" onmouseover="highlightText()" onmouseout="removeHighlight()">Hover over me</a>
+<p id="para">This text will be italicized when you hover over the link above.</p>
+
+<h3>Alter Cell Content</h3>
+<table id="exampleTable" border="1">
+    <tr>
+        <td>1,1</td>
+        <td>1,2</td>
+    </tr>
+    <tr>
+        <td>2,1</td>
+        <td>2,2</td>
+    </tr>
+</table>
+<br>
+<button onclick="alterCell(1, 1, 'New Content')">Alter 1st Row, 1st Cell</button>
+
+<h3>Set Paragraph Background Color</h3>
+<p id="bgParagraph">This paragraph's background color can be changed.</p>
+<br>
+<select id="colorSelect">
+    <option value="yellow">Yellow</option>
+    <option value="lightblue">Light Blue</option>
+    <option value="lightgreen">Light Green</option>
+</select>
+<br>
+<button onclick="setBackgroundColor()">Set Background Color</button>
+
+<h3>Count and Display Drop-down Items</h3>
+<select id="countSelect">
+    <option value="ItemA">Item A</option>
+    <option value="ItemB">Item B</option>
+    <option value="ItemC">Item C</option>
+</select>
+<br>
+<button onclick="countDropdownItems()">Count Items</button>
+
+<h3>Calculate Ideal Weight</h3>
+<label for="heightInput">Enter your height (cm):</label>
+<input type="number" id="heightInput">
+<br>
+<button onclick="calculateIdealWeight()">Calculate Ideal Weight</button>
+<p id="weightResult"></p>
+
+<script>
+    function addRow() {
+        const table = document.getElementById("myTable");
+        const newRow = table.insertRow();
+        const newCell = newRow.insertCell(0);
+        newCell.textContent = "New Row";
+    }
+
+    function eliminateItem() {
+        const select = document.getElementById("mySelect");
+        select.remove(select.selectedIndex);
+    }
+
+    function showNames() {
+        const firstName = document.getElementById("firstName").value;
+        const lastName = document.getElementById("lastName").value;
+        alert("First Name: " + firstName + "\nLast Name: " + lastName);
+    }
+
+    function highlightText() {
+        document.getElementById("para").classList.add("highlight");
+    }
+
+    function removeHighlight() {
+        document.getElementById("para").classList.remove("highlight");
+    }
+
+    function alterCell(row, col, content) {
+        const table = document.getElementById("exampleTable");
+        table.rows[row-1].cells[col-1].textContent = content;
+    }
+
+    function setBackgroundColor() {
+        const color = document.getElementById("colorSelect").value;
+        document.getElementById("bgParagraph").style.backgroundColor = color;
+    }
+
+    function countDropdownItems() {
+        const select = document.getElementById("countSelect");
+        alert("Total items: " + select.options.length);
+    }
+
+    function calculateIdealWeight() {
+        const height = document.getElementById("heightInput").value;
+        const idealWeight = height - 100;
+        document.getElementById("weightResult").textContent = "Ideal Weight: " + idealWeight + " kg";
+    }
+</script>
+
+</body>
+</html>

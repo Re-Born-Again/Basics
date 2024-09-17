@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 6</title>
+</head>
+
+<body>
+    <script>
+        tbl = document.createElement("table");
+        row = document.createElement("tr");
+        col = document.createElement("td")
+        row.appendChild(col);
+        tbl.appendChild(row);
+        tbl.setAttribute("border", "1");
+        tbl.innerHTML = "TABLE"
+        tbl.setAttribute("id", "t1");
+        btn = document.createElement("button");
+        btn.innerHTML = "Add Row";
+        btn.addEventListener("click",addRow);
+        document.body.appendChild(tbl);
+        document.body.appendChild(btn);
+
+        function addRow() {
+            tbl = document.getElementById("t1");
+            row = document.createElement("tr");
+            col = document.createElement("td");
+            col.innerHTML="new row";
+            row.appendChild(col);
+            tbl.appendChild(row);
+        }
+
+    </script>
+</body>
+
+</html>

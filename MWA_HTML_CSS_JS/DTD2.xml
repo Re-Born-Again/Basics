@@ -1,0 +1,26 @@
+<!DOCTYPE Software [
+    <!ELEMENT Software (languages,applications,systems)>
+    <!ELEMENT languages (language+)>
+    <!ELEMENT applications (application+)>
+    <!ELEMENT systems (system)>
+    <!ELEMENT language (#PCDATA)>
+    <!ELEMENT application (#PCDATA)>
+    <!ELEMENT system (#PCDATA)>
+
+    <!ATTLIST language processor (compiler|interpreter) "compiler">
+    <!ATTLIST application type (wide|narrow) "wide">
+    <!ATTLIST system os (modern|old) "modern">
+]>
+<Software>
+    <languages>
+        <language processor="interpreter">python</language>
+        <language processor="compiler">c</language>
+    </languages>
+    <applications>
+        <application type="wide">Visualize</application>
+        <application type="narrow">Game</application>
+    </applications>
+    <systems>
+        <system os="modern">linux</system>
+    </systems>
+</Software>
