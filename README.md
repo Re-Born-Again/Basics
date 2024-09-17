@@ -2,6 +2,8 @@
 
 Welcome to the Basics repository! This repository showcases fundamental concepts and examples in various programming languages and technologies, demonstrating my skills and understanding of these areas.
 
+* Main projects are in other repositories
+
 ## Introduction
 
 Hello! I'm Yogeswaran, a passionate programmer and aspiring software developer. This repository is a collection of my work that illustrates my understanding of different programming languages and technologies.
