@@ -25,23 +25,11 @@ This repository includes examples and projects for the following languages and t
 - **STL (Standard Template Library)**: Usage of vectors, sets, maps, and other STL containers.
 - **Object-Oriented Programming**: Implementation of classes, inheritance, polymorphism, and encapsulation.
 - **Concurrency**: Examples using threads and synchronization techniques.
-  
-### Python
-
-- **Statistical Analysis and Machine Learning**: Regressions, Tests, Clustering.
-- **Dimensionality Reduction and Feature Selection**: Principal Component Analysis (PCA), Fisher Discriminant Analysis, Correlation Analysis.
-- **Data Visualization**: Heatmaps, Plots, Cluster Visualizations.
 
 ### HTML/CSS
 
 - **Web Design**: Responsive web page layouts and modern design practices.
 - **Styling**: Moderate CSS techniques.
-
-### Java
-
-- **OOP Concepts**: Classes, inheritance, polymorphism, and encapsulation.
-- **Collections Framework**: Usage of lists, sets, maps, and other collections.
-- **Concurrency**: Examples using threads, executors, and synchronization techniques.
 
 ### PL/SQL
 
