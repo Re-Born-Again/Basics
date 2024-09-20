@@ -2,7 +2,7 @@
 
 Welcome to the Basics repository! This repository showcases fundamental concepts and examples in various programming languages and technologies, demonstrating my skills and understanding of these areas.
 
-* Main projects are in other repositories
+\* Main projects are in other repositories
 
 ## Introduction
 
