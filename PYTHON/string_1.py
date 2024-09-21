@@ -35,7 +35,7 @@ def func3():
 
 def func4():
     str = ""
-    str += chr(1)  # Adding ASCII char value 1 to string
+    str += chr(65)  # Adding ASCII char value 1 to string
     print(str)
 
 def func5():
@@ -60,4 +60,4 @@ def func6():
     s = "".join(map(str,l))
     print(s)
 
-func3()
+func6()
