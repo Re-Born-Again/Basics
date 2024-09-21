@@ -31,12 +31,6 @@ This repository includes examples and projects for the following languages and t
 - **Web Design**: Responsive web page layouts and modern design practices.
 - **Styling**: Moderate CSS techniques.
 
-### PL/SQL
-
-- **Stored Procedures and Functions**: Writing and managing stored procedures and functions.
-- **Triggers**: Creating triggers to automate database tasks.
-- **Cursors**: Using cursors to handle query results.
-
 ### R
 
 - **Data Visualization**: Creating plots and charts with ggplot2.
